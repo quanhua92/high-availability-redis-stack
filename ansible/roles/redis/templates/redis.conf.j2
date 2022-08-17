@@ -1,0 +1,11 @@
+protected-mode no
+port 6379
+{% if inventory_hostname != "master" %}
+replicaof {{ hostvars['master']['ansible_host'] }} {{ hostvars['master']['port'] }}
+{% endif %}
+replica-announce-ip {{ hostvars[inventory_hostname]['ansible_host'] }}
+replica-announce-port {{ hostvars[inventory_hostname]['port'] }}
+
+# authentication
+masterauth {{ REDIS_PASSWORD}}
+requirepass {{ REDIS_PASSWORD}}

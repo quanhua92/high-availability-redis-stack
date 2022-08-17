@@ -1,0 +1,7 @@
+- name: Copying configuration file
+  register: output
+  template:
+    src: redis.conf.j2
+    dest: /etc/redis/redis.conf
+- ansible.builtin.debug:
+  var: output
