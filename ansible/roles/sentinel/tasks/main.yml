@@ -1,7 +1,11 @@
+- name: create /etc/redis
+  file:
+    path: "/etc/redis"
+    state: "directory"
+    recurse: "yes"
+    mode: 0750
 - name: Copying configuration file
   register: output
   template:
     src: sentinel.conf.j2
-    dest: /etc/sentinel/sentinel.conf
-- name: show config value
-  debug: var=output
+    dest: /etc/redis/sentinel.conf

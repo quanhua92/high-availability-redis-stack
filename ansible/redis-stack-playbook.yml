@@ -1,5 +1,7 @@
 - hosts: servers
   become: true
+  vars:
+    - REDIS_PASSWORD: a_complex_password
   roles:
     - redis
     - sentinel
