@@ -14,10 +14,11 @@
     name: sentinel
     image: redis/redis-stack-server:latest
     ports:
-      - {{ hostvars[inventory_hostname]['sentinel_port'] }}:26379
+      - "{{ hostvars[inventory_hostname]['sentinel_port'] }}:26379"
     detach: true
     pull: yes
     restart_policy: always
+    restart: yes
     volumes:
       - /etc/redis:/etc/redis:rw
     command: redis-sentinel /etc/redis/sentinel.conf

@@ -13,10 +13,11 @@
     name: redis
     image: redis/redis-stack-server:latest
     ports:
-      - {{ hostvars[inventory_hostname]['port'] }}:6379
+      - "{{ hostvars[inventory_hostname]['port'] }}:6379"
     detach: true
     pull: yes
     restart_policy: always
+    restart: yes
     volumes:
       - /etc/redis/redis.conf:/redis-stack.conf:rw
       - /etc/redis/local-data/:/data:rw
