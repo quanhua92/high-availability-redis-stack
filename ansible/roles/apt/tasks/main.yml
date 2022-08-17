@@ -1,0 +1,26 @@
+- name: Install aptitude
+  register: apt_status
+  until: apt_status is success
+  delay: 6
+  retries: 10
+  apt:
+    name: aptitude
+    state: latest
+    update_cache: true
+- name: Install required system packages
+  register: apt_status
+  until: apt_status is success
+  delay: 6
+  retries: 10
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+      - python3-pkg-resources
+    state: latest
+    update_cache: true

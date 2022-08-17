@@ -1,4 +1,4 @@
 [servers]
-redis_master ansible_host=192.168.1.15 port=6890 sentinel_port=26890
-redis_replica_1 ansible_host=192.168.1.16 port=6890 sentinel_port=26890
-redis_replica_2 ansible_host=192.168.1.17 port=6890 sentinel_port=26890
+redis_master ansible_host=192.168.1.15 port=6380 sentinel_port=26380
+redis_replica_1 ansible_host=192.168.1.16 port=6381 sentinel_port=26381
+redis_replica_2 ansible_host=192.168.1.17 port=6382 sentinel_port=26382

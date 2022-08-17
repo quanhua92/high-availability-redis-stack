@@ -12,9 +12,9 @@
 - name: Deploy Sentinel Server
   community.docker.docker_container:
     name: sentinel
-    image: redis/redis-stack-server:7
+    image: redis/redis-stack-server:latest
     ports:
-      - 26380:26379
+      - {{ hostvars[inventory_hostname]['sentinel_port'] }}:26379
     detach: true
     pull: yes
     restart_policy: always
