@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  redis-1:
+    image: redis/redis-stack-server:latest
+    restart: always
+    volumes:
+      - "./redis-1/redis.conf:/redis-stack.conf"
+      - "./local-data/:/data"
+    ports:
+      - 6381:6379      
+  sentinel-1:
+    image: redis/redis-stack-server:latest
+    restart: always
+    volumes:
+      - "./sentinel-1:/etc/sentinel"
+    command: redis-sentinel /etc/sentinel/sentinel.conf
+    ports:
+      - 26381:26379

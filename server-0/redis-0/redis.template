@@ -1,0 +1,8 @@
+protected-mode no
+port 6379
+replica-announce-ip _SERVER_0_IP_
+replica-announce-port 6380
+
+# authentication
+masterauth _PASSWORD_HERE_
+requirepass _PASSWORD_HERE_
