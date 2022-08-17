@@ -9,3 +9,15 @@
   template:
     src: sentinel.conf.j2
     dest: /etc/redis/sentinel.conf
+- name: Deploy Sentinel Server
+  community.docker.docker_container:
+    name: sentinel
+    image: redis/redis-stack-server:7
+    ports:
+      - 26380:26379
+    detach: true
+    pull: yes
+    restart_policy: always
+    volumes:
+      - /etc/redis:/etc/redis:rw
+    command: redis-sentinel /etc/redis/sentinel.conf

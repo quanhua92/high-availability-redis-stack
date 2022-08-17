@@ -9,3 +9,15 @@
   template:
     src: redis.conf.j2
     dest: /etc/redis/redis.conf
+- name: Deploy Redis Stack Server
+  community.docker.docker_container:
+    name: redis
+    image: redis/redis-stack-server:7
+    ports:
+      - 6380:6379
+    detach: true
+    pull: yes
+    restart_policy: always
+    volumes:
+      - /etc/redis/redis.conf:/redis-stack.conf:rw
+      - /etc/local-data/:/data:rw
