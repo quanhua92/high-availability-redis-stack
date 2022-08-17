@@ -3,5 +3,5 @@
   template:
     src: sentinel.conf.j2
     dest: /etc/sentinel/sentinel.conf
-- ansible.builtin.debug:
-  var: output
+- name: show config value
+  debug: var=output
