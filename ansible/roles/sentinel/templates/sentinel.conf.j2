@@ -1,4 +1,4 @@
-port 26379
+port {{ hostvars[inventory_hostname]['sentinel_port'] }}
 sentinel announce-ip {{ hostvars[inventory_hostname]['ansible_host'] }}
 sentinel announce-port {{ hostvars[inventory_hostname]['sentinel_port'] }}
 sentinel monitor mymaster {{ hostvars['redis_master']['ansible_host'] }} {{ hostvars['redis_master']['port'] }} 2

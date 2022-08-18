@@ -2,7 +2,6 @@
   file:
     path: "/etc/redis"
     state: "directory"
-    recurse: "yes"
     mode: 0750
 - name: Copying configuration file
   register: output
@@ -13,12 +12,13 @@
   community.docker.docker_container:
     name: sentinel
     image: redis/redis-stack-server:latest
-    ports:
-      - "{{ hostvars[inventory_hostname]['sentinel_port'] }}:26379"
+    # ports:
+    # - "{{ hostvars[inventory_hostname]['sentinel_port'] }}:26379"
     detach: true
     pull: yes
     restart_policy: always
     restart: yes
+    network_mode: host
     volumes:
       - /etc/redis:/etc/redis:rw
     command: redis-sentinel /etc/redis/sentinel.conf
