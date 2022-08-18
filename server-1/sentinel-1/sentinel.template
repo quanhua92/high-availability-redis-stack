@@ -1,4 +1,4 @@
-port 26379
+port 26381
 sentinel resolve-hostnames yes
 sentinel announce-ip _SERVER_1_IP_
 sentinel announce-port 26381
